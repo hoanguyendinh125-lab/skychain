@@ -1,0 +1,46 @@
+.sky-map-icon {
+  background: transparent !important;
+  border: 0 !important;
+}
+
+/* Keep Leaflet's panes contained without overriding their own positioning. */
+.map-shell {
+  isolation: isolate;
+  position: relative;
+  z-index: 0;
+}
+
+.map-canvas,
+.map-native {
+  position: relative;
+  z-index: 0;
+}
+
+.map-native.leaflet-container {
+  font-family: inherit;
+}
+
+.leaflet-control-attribution {
+  background: #ffffffe8 !important;
+  font-size: 9px !important;
+}
+
+.leaflet-tooltip {
+  border: 0 !important;
+  border-radius: 9px !important;
+  box-shadow: 0 3px 12px #0a263530 !important;
+  color: var(--ink) !important;
+  font-size: 11px !important;
+}
+
+.map-native.map-contrast .leaflet-tile-pane {
+  filter: saturate(.7) contrast(1.18);
+}
+
+.map-native:not(.map-tiles-ready) {
+  background-color: #dce9e4;
+  background-image:
+    radial-gradient(circle at 18% 25%, #bdd6c8 0 8%, transparent 9%),
+    radial-gradient(circle at 75% 70%, #c6ddd1 0 12%, transparent 13%),
+    repeating-linear-gradient(145deg, transparent 0 24px, #b8cec455 25px 26px);
+}

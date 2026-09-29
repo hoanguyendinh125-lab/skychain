@@ -11,8 +11,7 @@ if(!orders){try{const old=JSON.parse(localStorage.getItem('skychain-v4'));orders
 let reads={};try{reads=JSON.parse(localStorage.getItem('skychain-reads'))||{}}catch{}
 let S={screen:'splash',role:null,view:'home',selected:null,filter:'all',query:'',paused:false,drawer:false},flow=null,modal=null,toastTimer,focusBefore,installPrompt,searchResults=[],modalVersion=0;
 let gpsState='Chưa cấp quyền';
-const mine=()=>orders.filter(o=>o.role===S.role),active=()=>mine().filter(o=>!o.cancelled&&o.step<4),current=()=>mine().find(o=>o.id===S.selected)||active()[0]||mine()[0];
-function save(){try{localStorage.setItem('skychain-v6',JSON.stringify(orders));localStorage.setItem('skychain-reads',JSON.stringify(reads))}catch{toast('Không lưu được trên thiết bị. Dữ liệu chỉ giữ trong phiên này.')}}
+const mine=()=>orders,active=()=>mine().filter(o=>!o.cancelled&&o.step<4),current=()=>mine().find(o=>o.id===S.selected)||active()[0]||mine()[0];function save(){try{localStorage.setItem('skychain-v6',JSON.stringify(orders));localStorage.setItem('skychain-reads',JSON.stringify(reads))}catch{toast('Không lưu được trên thiết bị. Dữ liệu chỉ giữ trong phiên này.')}}
 function toast(text){$('#toast').textContent=text;$('#toast').classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('visible'),3200)}
 function status(o){return o.cancelled?'Đã hủy':stages[o.step]}
 function sample(){return '<span class="sample">Dữ liệu mô phỏng</span>'}
